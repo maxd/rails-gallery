@@ -1,0 +1,28 @@
+defaults: &defaults
+  hosts:
+    - localhost:27017
+
+options: &options
+  options:
+    use_utc: true
+
+development:
+  <<: *options
+  sessions:
+    default:
+      database: rails_gallery_development
+      <<: *defaults
+
+staging:
+  <<: *options
+  sessions:
+    default:
+      database: rails_gallery_staging
+      <<: *defaults
+
+production:
+  <<: *options
+  sessions:
+    default:
+      database: rails_gallery_production
+      <<: *defaults

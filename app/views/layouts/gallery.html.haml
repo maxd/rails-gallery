@@ -1,0 +1,16 @@
+- page_title 'Gallery'
+
+- content_for :main_content do
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container-fluid
+        %a.brand{href: root_path}
+          %img{src: '/favicon.ico'}
+          rails-gallery
+        = render_navigation(context: :gallery_left, expand_all: true)
+        = render_navigation(context: :gallery_right, expand_all: true)
+
+  .container-fluid
+    = yield
+
+= render :file => 'layouts/application'
