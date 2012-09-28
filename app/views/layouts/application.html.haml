@@ -14,5 +14,7 @@
   %body{body_attrs}
     = yield(:main_content) || yield
 
+    .modal-dialog
+
     = javascript_include_tag 'application'
     = yield :javascript

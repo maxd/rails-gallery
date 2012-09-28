@@ -1,0 +1,9 @@
+.modal.hide.fade
+  .modal-header
+    %button.close{type: 'button', data: {dismiss: 'modal'}} &times;
+    %h3= yield :title
+  .modal-body
+    = yield
+  .modal-footer
+    %button.btn.btn-primary.confirm-button= yield(:confirm_button)
+    %button.btn.close-button{data: {dismiss: 'modal'}} Close

@@ -10,7 +10,11 @@ gem 'coffee-filter',                '~> 0.1.1'
 gem 'simple-navigation',            '~> 3.9.0'
 gem 'simple-navigation-bootstrap',  '~> 0.0.4'
 
+gem 'simple_form',                  '~> 2.0.2'
+
 gem 'mongoid',                      '~> 3.0.6'
+
+gem 'pjax_rails',                   '~> 0.3.3'
 
 group :assets do
   gem 'sass-rails',                 '~> 3.2.5'

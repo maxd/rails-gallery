@@ -1,0 +1,8 @@
+%li
+  %a
+    = album.title
+    %span.menu
+      %button.btn.btn-link.edit-album{data: {href: edit_album_path(album), toggle: 'open-modal', success: 'reloadAlbums'}}
+        %i.icon-pencil
+      %button.btn.btn-link.destroy-album{data: {href: confirm_destroy_album_path(album), toggle: 'open-modal', success: 'reloadAlbums'}}
+        %i.icon-remove

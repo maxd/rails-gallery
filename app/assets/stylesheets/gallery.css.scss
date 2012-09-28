@@ -1,4 +1,23 @@
 body.page-gallery {
   padding-top: 60px;
   background: url(/assets/bg.png);
+
+  .albums {
+    .btn {
+      display: inline-block;
+      padding: 0 0 4px 5px;
+    }
+
+    a {
+      .menu {
+        float: right;
+        display: none;
+      }
+
+      &:hover .menu {
+        display: inline-block;
+      }
+    }
+  }
+
 }

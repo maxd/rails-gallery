@@ -1,6 +1,11 @@
 .row-fluid
-  .span2
+  .span2.sidebar
     .albums
+      = render template: 'gallery/albums'
 
-  .span10
-    .items
+  .span10.main
+
+- content_for :javascript do
+  :coffeescript
+    window.reloadAlbums = ->
+      $('.albums').load('#{gallery_albums_path}')

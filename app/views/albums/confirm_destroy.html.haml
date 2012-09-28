@@ -1,0 +1,5 @@
+- content_for :title, 'Delete Album'
+- content_for :confirm_button, 'Confirm'
+
+= simple_form_for(@album, method: :delete) do |f|
+  %p= "Do you want to delete '#{@album.title}'?"
