@@ -3,4 +3,7 @@
     Albums
     %button.btn.btn-link.new-album{data: {href: new_album_path, toggle: 'open-modal', success: 'reloadAlbums'}}
       %i.icon-plus-sign
-  = render partial: 'album', collection: @albums
+  - if @albums.present?
+    = render partial: 'albums/album', collection: @albums
+  - else
+    .alert.alert-info.center-text No albums.

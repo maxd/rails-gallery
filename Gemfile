@@ -3,6 +3,7 @@ source :rubygems
 gem 'rails',                        '3.2.8'
 
 gem 'jquery-rails',                 '~> 2.1.2'
+gem 'jquery-ui-rails',              '~> 2.0.1'
 
 gem 'haml',                         '~> 3.1.7'
 gem 'coffee-filter',                '~> 0.1.1'
@@ -13,8 +14,6 @@ gem 'simple-navigation-bootstrap',  '~> 0.0.4'
 gem 'simple_form',                  '~> 2.0.2'
 
 gem 'mongoid',                      '~> 3.0.6'
-
-gem 'pjax_rails',                   '~> 0.3.3'
 
 group :assets do
   gem 'sass-rails',                 '~> 3.2.5'

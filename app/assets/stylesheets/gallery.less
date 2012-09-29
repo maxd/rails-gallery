@@ -1,0 +1,41 @@
+body.page-gallery {
+  padding-top: 60px;
+  background: url(/assets/bg.png);
+
+  .albums {
+    .btn {
+      display: inline-block;
+      padding: 0 0 4px 5px;
+    }
+
+    a {
+      .menu {
+        float: right;
+        display: none;
+      }
+
+      &:hover .menu {
+        display: inline-block;
+      }
+    }
+  }
+
+  .items {
+    .thumbnails {
+      li {
+        width: 100px;
+        margin-bottom: 3px;
+        margin-left: 3px;
+
+        .thumbnail {
+          padding: 2px;
+
+          &.ui-selected, &.ui-selecting {
+            border-color: @linkColor;
+            .box-shadow(0 1px 4px rgba(0,105,214,.25));
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,11 +1,19 @@
 .row-fluid
   .span2.sidebar
+    %ul.nav.nav-list
+      %li.all-photos-and-videos.select-items-scope{data: {href: items_path} }
+        %a
+          All Photos & Videos
     .albums
-      = render template: 'gallery/albums'
+      = render template: 'albums/index'
 
   .span10.main
+    .items
 
 - content_for :javascript do
   :coffeescript
     window.reloadAlbums = ->
-      $('.albums').load('#{gallery_albums_path}')
+      $('.albums').load('#{albums_path}')
+
+    $ ->
+      $('.all-photos-and-videos').click()

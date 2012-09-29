@@ -2,6 +2,12 @@ class AlbumsController < ApplicationController
 
   layout 'modal_dialog'
 
+  def index
+    @albums = Album.all
+
+    render layout: false
+  end
+
   def new
     @album = Album.new
   end

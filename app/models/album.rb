@@ -8,4 +8,6 @@ class Album
   attr_accessible :title, :description, :is_public
 
   validates_presence_of :title
+
+  has_and_belongs_to_many :items
 end

@@ -6,6 +6,8 @@ $ ->
     $('.modal-dialog').load url, ->
       $('.modal-dialog .modal').modal('show')
 
+    false
+
   $(document).on 'click', '.modal-dialog .confirm-button', ->
     form = $('.modal-dialog form')
     $.post form.attr('action'), form.serialize(), ->
@@ -13,3 +15,5 @@ $ ->
       $('.modal-dialog .modal').modal('hide')
     .error (data) ->
       $('.modal-dialog .modal-body').html(data.responseText)
+
+    false

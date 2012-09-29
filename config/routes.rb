@@ -2,10 +2,12 @@ RailsGallery::Application.routes.draw do
 
   root to: 'gallery#index'
 
-  get '/gallery/albums' => 'gallery#albums'
-
   resources :albums do
+    resources :items, only: :index
+
     get 'confirm_destroy', on: :member
   end
+
+  resources :items, only: :index
 
 end

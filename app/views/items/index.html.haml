@@ -1,0 +1,10 @@
+- if @items.present?
+  %ul.thumbnails
+    = render partial: 'items/item', collection: @items
+
+  :coffeescript
+    $('.items ul').selectable
+      filter: '.thumbnail'
+
+- else
+  .alert.alert-info.center-text No photos or videos.
