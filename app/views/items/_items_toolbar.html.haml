@@ -1,0 +1,25 @@
+.btn-toolbar
+  .btn-group
+    %button.upload-photos-and-videos.btn.btn-primary Upload Photos or Videos
+
+  .type-filter.btn-group.pull-right
+    %button.btn.dropdown-toggle{data: {toggle: 'dropdown'}}
+      = ItemsHelper::TYPE_FILTERS_MENU[params[:type_filter] ? params[:type_filter].to_sym : :all]
+      %span.caret
+    %ul.dropdown-menu
+      - ItemsHelper::TYPE_FILTERS_MENU.each do |k, v|
+        %li
+          %a.items-filter{href: url_for(age_filter: params[:age_filter], type_filter: k)}= v
+        - if k == :all
+          %li.divider
+
+  .age-filter.btn-group.pull-right
+    %button.btn.dropdown-toggle{data: {toggle: 'dropdown'}}
+      = ItemsHelper::AGE_FILTERS_MENU[params[:age_filter] ? params[:age_filter].to_sym : :all]
+      %span.caret
+    %ul.dropdown-menu
+      - ItemsHelper::AGE_FILTERS_MENU.each do |k, v|
+        %li
+          %a.items-filter{href: url_for(age_filter: k, type_filter: params[:type_filter])}= v
+        - if k == :all
+          %li.divider

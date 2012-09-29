@@ -1,9 +1,11 @@
+= render partial: 'items/items_toolbar'
+
 - if @items.present?
   %ul.thumbnails
     = render partial: 'items/item', collection: @items
 
   :coffeescript
-    $('.items ul').selectable
+    $('.items ul.thumbnails').selectable
       filter: '.thumbnail'
 
 - else
