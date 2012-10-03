@@ -1,4 +1,4 @@
-%li.select-items-scope{data: {href: album_items_path(album)} }
+%li.select-items-scope{data: {toggle: 'load', href: album_items_path(album), target: '.main', success: 'selectItemScope'} }
   %a
     = album.title
     %span.menu

@@ -1,0 +1,22 @@
+.btn-toolbar
+  .btn-group
+    %button.btn{data: {toggle: 'load', href: params[:referer], target: '.main'}}
+      %i.icon-chevron-left
+      Back
+
+  .btn-group
+    %button.cancel-preview-generation.btn.btn-warning
+      %i.icon-ban-circle.icon-white
+      Cancel Preview Generation
+
+  .btn-group.pull-right
+    %button.start-upload.btn.btn-primary
+      %i.icon-upload.icon-white
+      Upload Selected Files
+    %button.cancel-upload.btn.btn-warning
+      %i.icon-ban-circle.icon-white
+      Cancel Upload
+
+  .btn-group.pull-right.span2
+    .progress.progress-striped.active.hide.upload-progress
+      .bar

@@ -8,6 +8,8 @@ gem 'jquery-ui-rails',              '~> 2.0.1'
 gem 'haml',                         '~> 3.1.7'
 gem 'coffee-filter',                '~> 0.1.1'
 
+gem 'eco',                          '~> 1.0.0'
+
 gem 'simple-navigation',            '~> 3.9.0'
 gem 'simple-navigation-bootstrap',  '~> 0.0.4'
 

@@ -8,12 +8,11 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
+ *= require custom_bootstrap/custom_bootstrap
  *= require jquery.ui.selectable
+ *= require_directory .
+ *= require_self
  */
-
-@import 'custom_bootstrap/custom_bootstrap';
-@import 'gallery';
 
 .center-text {
   text-align: center;

@@ -10,4 +10,7 @@ RailsGallery::Application.routes.draw do
 
   resources :items, only: :index
 
+  get 'uploader' => 'upload#uploader'
+  post 'upload' => 'upload#upload'
+
 end

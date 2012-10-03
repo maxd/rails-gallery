@@ -1,0 +1,19 @@
+<tr class="video-file-row" data-id="<%= @uploadItem.id %>">
+  <td class="select">
+    <% unless @uploadItem.uploaded: %>
+    <div class="select-upload-item">
+      <input type="checkbox" id="select-<%= @uploadItem.id %>" <%= "checked" if @uploadItem.selected %>/>
+      <label for="select-<%= @uploadItem.id %>"></label>
+    </div>
+    <% end %>
+  </td>
+  <td class="name">
+    <img src="/images/video-preview.png" class="img-polaroid preview-image">
+    <ul class="unstyled">
+      <li><%= @uploadItem.file.name %></li>
+    </ul>
+  </td>
+  <td class="actions">
+    <button class="btn btn-danger delete-upload-item">Delete</button>
+  </td>
+</tr>

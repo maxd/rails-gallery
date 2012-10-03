@@ -1,6 +1,6 @@
 .btn-toolbar
   .btn-group
-    %button.upload-photos-and-videos.btn.btn-primary Upload Photos or Videos
+    %button.upload-photos-and-videos.btn.btn-primary{data: {toggle: 'load', href: uploader_path(album_id: params[:album_id], referer: request.fullpath), target: '.main', success: 'uploaderOpen'}} Upload Photos or Videos
 
   .type-filter.btn-group.pull-right
     %button.btn.dropdown-toggle{data: {toggle: 'dropdown'}}
@@ -8,8 +8,8 @@
       %span.caret
     %ul.dropdown-menu
       - ItemsHelper::TYPE_FILTERS_MENU.each do |k, v|
-        %li
-          %a.items-filter{href: url_for(age_filter: params[:age_filter], type_filter: k)}= v
+        %li{data: {toggle: 'load', href: url_for(age_filter: params[:age_filter], type_filter: k), target: '.main'}}
+          %a{href: '#'}= v
         - if k == :all
           %li.divider
 
@@ -19,7 +19,7 @@
       %span.caret
     %ul.dropdown-menu
       - ItemsHelper::AGE_FILTERS_MENU.each do |k, v|
-        %li
-          %a.items-filter{href: url_for(age_filter: k, type_filter: params[:type_filter])}= v
+        %li{data: {toggle: 'load', href: url_for(age_filter: k, type_filter: params[:type_filter]), target: '.main'}}
+          %a{href: '#'}= v
         - if k == :all
           %li.divider

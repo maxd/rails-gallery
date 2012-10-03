@@ -1,12 +1,13 @@
-= render partial: 'items/items_toolbar'
+.items
+  = render partial: 'items/toolbar'
 
-- if @items.present?
-  %ul.thumbnails
-    = render partial: 'items/item', collection: @items
+  - if @items.present?
+    %ul.thumbnails
+      = render partial: 'items/item', collection: @items
 
-  :coffeescript
-    $('.items ul.thumbnails').selectable
-      filter: '.thumbnail'
+    :coffeescript
+      $('.items ul.thumbnails').selectable
+        filter: '.thumbnail'
 
-- else
-  .alert.alert-info.center-text No photos or videos.
+  - else
+    .alert.alert-info.center-text No photos or videos.

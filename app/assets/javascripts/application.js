@@ -14,5 +14,10 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require jquery.ui.selectable
+//= require underscore
+//= require jquery.ba-jqmq
+//= require common
+//= require_directory ./templates
+//= require_directory ./uploader
 //= require_directory .
 //= require_self
