@@ -5,9 +5,11 @@ class Album
   field :description, type: String
   field :is_public, type: Boolean, default: false
 
-  attr_accessible :title, :description, :is_public
-
   validates_presence_of :title
 
-  has_and_belongs_to_many :items
+  has_and_belongs_to_many :media_items
+
+  attr_accessible :title
+  attr_accessible :description
+  attr_accessible :is_public
 end

@@ -1,27 +1,31 @@
-<tr class="photo-file-row" data-id="<%= @uploadItem.id %>">
+<tr class="photo-file-row" data-id="<%= @mediaItem.id %>">
   <td class="select">
-    <% unless @uploadItem.uploaded: %>
-    <div class="select-upload-item">
-      <input type="checkbox" id="select-<%= @uploadItem.id %>" <%= "checked" if @uploadItem.selected %>/>
-      <label for="select-<%= @uploadItem.id %>"></label>
+    <% unless @mediaItem.uploaded: %>
+    <div class="select-media-item">
+      <input type="checkbox" id="select-<%= @mediaItem.id %>" <%= "checked" if @mediaItem.selected %>/>
+      <label for="select-<%= @mediaItem.id %>"></label>
     </div>
     <% end %>
   </td>
   <td class="name">
     <img src="/images/photo-preview.png" class="img-polaroid preview-image">
     <ul class="unstyled">
-      <li><%= @uploadItem.file.name %></li>
+      <li><%= @mediaItem.file.name %></li>
+      <% if @mediaItem.additionalItems.length: %>
       <li>
-        <% for name in @prepareRelatedItemNames(@uploadItem): %>
+        <% for name in @prepareAdditionalItemNames(@mediaItem): %>
         <label class="label label-info">
           <i class="icon-plus-sign icon-white"></i>
           <%= name %>
         </label>
         <% end %>
       </li>
+      <% end %>
     </ul>
   </td>
+  <td class="message">
+  </td>
   <td class="actions">
-    <button class="btn btn-danger delete-upload-item">Delete</button>
+    <button class="btn btn-danger delete-media-item">Delete</button>
   </td>
 </tr>

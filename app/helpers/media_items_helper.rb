@@ -1,4 +1,4 @@
-module ItemsHelper
+module MediaItemsHelper
   TYPE_FILTERS_MENU = {
       all: 'All Types',
       photos: 'Photos',

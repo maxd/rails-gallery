@@ -1,9 +1,9 @@
 .items
-  = render partial: 'items/toolbar'
+  = render partial: 'media_items/toolbar'
 
-  - if @items.present?
+  - if @media_items.present?
     %ul.thumbnails
-      = render partial: 'items/item', collection: @items
+      = render partial: 'media_items/media_item', collection: @media_items
 
     :coffeescript
       $('.items ul.thumbnails').selectable

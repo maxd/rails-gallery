@@ -1,16 +1,18 @@
-<tr class="raw-image-file-row" data-id="<%= @uploadItem.id %>">
+<tr class="raw-image-file-row" data-id="<%= @mediaItem.id %>">
   <td class="select">
   </td>
   <td class="name">
     <img src="/images/photo-preview.png" class="img-polaroid preview-image">
     <ul class="unstyled">
-      <li><%= @uploadItem.file.name %></li>
+      <li><%= @mediaItem.file.name %></li>
       <li>
         <span class="label label-important">RAW image</span>
       </li>
     </ul>
   </td>
+  <td class="message">
+  </td>
   <td class="actions">
-    <button class="btn btn-danger delete-upload-item">Delete</button>
+    <button class="btn btn-danger delete-media-item">Delete</button>
   </td>
 </tr>

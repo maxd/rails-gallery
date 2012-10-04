@@ -1,0 +1,17 @@
+class window.FileType
+  @descriptors = <%= FileType::DESCRIPTORS.to_json %>
+  @unknownDescriptor = <%= FileType::UNKNOWN_DESCRIPTOR.to_json %>
+
+  @fileDescriptors: (filename) ->
+    descriptors = _.filter @descriptors, (fileDescriptor) ->
+      filename.extension().toLowerCase() in fileDescriptor.extensions
+
+    if _.isEmpty(descriptors) then [ @unknownDescriptor ] else descriptors
+
+  @fileType: (filename) ->
+    _.first(@fileDescriptors(filename)).type
+
+
+File::fileType = ->
+  @_fileType = FileType.fileType(@name) unless @_fileType
+  @_fileType
