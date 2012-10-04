@@ -13,7 +13,9 @@ class AdditionalItem
   validates_presence_of :file_original_filename
 
   set_callback :validation, :before do |mi|
-    mi.file_original_filename = mi.file.file.original_filename
-    mi.file_type = FileType.file_type(mi.file.file.original_filename)
+    if mi.new_record?
+      mi.file_original_filename = mi.file.file.original_filename
+      mi.file_type = FileType.file_type(mi.file.file.original_filename)
+    end
   end
 end

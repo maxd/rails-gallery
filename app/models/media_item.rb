@@ -1,8 +1,11 @@
+require 'digest'
+
 class MediaItem
   include Mongoid::Document
 
   field :file_original_filename, type: String
   field :file_type, type: Symbol
+  field :file_sha256, type: String
 
   mount_uploader :file, MediaItemUploader
 
@@ -17,9 +20,13 @@ class MediaItem
 
   validates_presence_of :file_original_filename
   validates_inclusion_of :file_type, in: [:image, :video]
+  validates_uniqueness_of :file_sha256
 
   set_callback :validation, :before do |mi|
-    mi.file_original_filename = mi.file.file.original_filename
-    mi.file_type = FileType.file_type(mi.file.file.original_filename)
+    if mi.new_record?
+      mi.file_original_filename = mi.file.file.original_filename
+      mi.file_type = FileType.file_type(mi.file.file.original_filename)
+      mi.file_sha256 = Digest::SHA256.file(mi.file.file.to_file).hexdigest
+    end
   end
 end
