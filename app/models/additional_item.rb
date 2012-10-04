@@ -1,5 +1,6 @@
 class AdditionalItem
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :file_original_filename, type: String
   field :file_type, type: Symbol
