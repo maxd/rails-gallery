@@ -18,8 +18,11 @@ gem 'simple_form',                  '~> 2.0.2'
 gem 'mongoid',                      '~> 3.0.6'
 
 gem 'carrierwave',                  '~> 0.6.2'
-gem 'carrierwave-mongoid',          '~> 0.1.0', require: 'carrierwave/mongoid'
+gem 'carrierwave-mongoid',          '0.3.0.alpha', require: 'carrierwave/mongoid', git: 'git://github.com/jnicklas/carrierwave-mongoid.git', branch: 'mongoid-3.0'
+gem 'carrierwave_backgrounder',     '~> 0.0.7'
 gem 'mini_magick',                  '~> 3.4.0'
+
+gem 'resque',                       '~> 1.23.0'
 
 group :assets do
   gem 'sass-rails',                 '~> 3.2.5'

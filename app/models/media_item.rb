@@ -7,8 +7,10 @@ class MediaItem
   field :file_original_filename, type: String
   field :file_type, type: Symbol
   field :file_sha256, type: String
+  field :file_processing, type: Boolean
 
   mount_uploader :file, MediaItemUploader
+  process_in_background :file
 
   has_and_belongs_to_many :albums
   has_many :additional_items
@@ -25,11 +27,19 @@ class MediaItem
   validates_inclusion_of :file_type, in: [:image, :video]
   validates_uniqueness_of :file_sha256
 
-  set_callback :validation, :before do |mi|
-    if mi.new_record?
-      mi.file_original_filename = mi.file.file.original_filename
-      mi.file_type = FileType.file_type(mi.file.file.original_filename)
-      mi.file_sha256 = Digest::SHA256.file(mi.file.file.to_file).hexdigest
+  def thumb_url
+    image = case file_type
+      when :image then file.image_thumb
+      when :video then file.video_thumb
     end
+    file_processing ? image.default_url : image.url
+  end
+
+  def preview_url
+    image = case file_type
+      when :image then file.image_preview
+      when :video then file.video_preview
+    end
+    file_processing ? image.default_url : image.url
   end
 end

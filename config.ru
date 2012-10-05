@@ -1,4 +1,12 @@
 # This file is used by Rack-based servers to start the application.
 
 require ::File.expand_path('../config/environment',  __FILE__)
-run RailsGallery::Application
+require 'resque/server'
+
+map '/' do
+  run RailsGallery::Application
+end
+
+map '/resque' do
+  run Resque::Server
+end
