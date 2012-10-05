@@ -102,16 +102,16 @@ class window.Uploader
         mediaItem.selected = false
         @mediaItems.push mediaItem
 
-  renderMediaItems: =>
-    sortedMediaItems = _.sortBy @mediaItems, (mediaItem) -> mediaItem.file.name
+    @mediaItems = _.sortBy @mediaItems, (mediaItem) -> mediaItem.file.name
 
+  renderMediaItems: =>
     # Update table rows
-    partials = _.map sortedMediaItems, (mediaItem) =>
+    partials = _.map @mediaItems, (mediaItem) =>
       @mediaItemRenderer.renderMediaItem mediaItem
     $('.files-for-upload tbody').html(partials.join('\n'))
 
     # Generate previews for images
-    _.each sortedMediaItems, (mediaItem) =>
+    _.each @mediaItems, (mediaItem) =>
       @previewQueue.add mediaItem
 
   previewQueueCallback: (mediaItem) =>
