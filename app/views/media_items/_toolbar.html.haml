@@ -9,7 +9,7 @@
     %ul.dropdown-menu
       - MediaItemsHelper::TYPE_FILTERS_MENU.each do |k, v|
         %li{data: {toggle: 'load', href: url_for(age_filter: params[:age_filter], type_filter: k), target: '.main'}}
-          %a{href: '#'}= v
+          %a{href: 'javascript:void(0)'}= v
         - if k == :all
           %li.divider
 
@@ -20,6 +20,6 @@
     %ul.dropdown-menu
       - MediaItemsHelper::AGE_FILTERS_MENU.each do |k, v|
         %li{data: {toggle: 'load', href: url_for(age_filter: k, type_filter: params[:type_filter]), target: '.main'}}
-          %a{href: '#'}= v
+          %a{href: 'javascript:void(0)'}= v
         - if k == :all
           %li.divider
