@@ -17,3 +17,6 @@ $ ->
       $('.modal-dialog .modal-body').html(data.responseText)
 
     false
+
+  $(document).on 'submit', '.modal-dialog form', ->
+    false
