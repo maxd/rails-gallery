@@ -1,5 +1,5 @@
 %li.select-items-scope{data: {toggle: 'load', href: album_media_items_path(album), target: '.main', success: 'selectItemScope'} }
-  %a
+  %a{href: 'javascript:void(0)'}
     = album.title
     %span.menu
       %button.btn.btn-link.edit-album{data: {href: edit_album_path(album), toggle: 'open-modal', success: 'reloadAlbums'}}

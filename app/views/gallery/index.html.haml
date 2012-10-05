@@ -2,7 +2,7 @@
   .span2.sidebar
     %ul.nav.nav-list
       %li.all-photos-and-videos.select-items-scope{data: {toggle: 'load', href: media_items_path, target: '.main', success: 'selectItemScope'} }
-        %a
+        %a{href: 'javascript:void(0)'}
           All Photos & Videos
     .albums
       = render template: 'albums/index'
