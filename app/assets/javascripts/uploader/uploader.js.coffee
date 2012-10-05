@@ -4,7 +4,9 @@ class window.Uploader
     @uploading = false
     @mediaItemRenderer = new MediaItemRenderer
     @previewBuilder = new PreviewBuilder(64, 64)
-    @maxUploadQueueSize = -1
+
+    @progressValue = -1
+    @maxProgressValue = -1
 
     @previewQueue = $.jqmq
       delay: -1
@@ -135,7 +137,16 @@ class window.Uploader
     $('.select-upload-item input').attr('disabled', @uploading)
     $('.delete-upload-item').attr('disabled', @uploading)
 
-    @displayUploadProgress(100 - Math.round(100 * @uploadQueue.size() / @maxUploadQueueSize))
+    @displayUploadProgress(Math.round(100 * @progressValue / @maxProgressValue))
+
+  displayUploadProgress: (percent) =>
+    progressBar = $('.upload-progress')
+
+    $('.bar', progressBar).width("#{percent}%").html(if percent > 10 then "#{percent}%" else "")
+    if @maxProgressValue != -1
+      progressBar.fadeIn()
+    else
+      progressBar.fadeOut()
 
   cancelPreviewGeneration: =>
     @previewQueue.clear()
@@ -145,11 +156,12 @@ class window.Uploader
     unless @uploading
       @uploading = true
 
-      _.each @mediaItems, (mediaItem) =>
-        if mediaItem.requireUpload()
-          @uploadQueue.add mediaItem
+      uploadItems = _.filter @mediaItems, (mediaItem) => mediaItem.requireUpload()
+      _.each uploadItems, (mediaItem) =>
+        @uploadQueue.add mediaItem
 
-      @maxUploadQueueSize = @uploadQueue.size()
+      @progressValue = 0
+      @maxProgressValue = uploadItems.length
 
       @updateActionStates()
     false
@@ -158,8 +170,11 @@ class window.Uploader
     @uploadMediaItem mediaItem, =>
       @uploadQueue.next()
 
-      if @uploadQueue.size() == 0
-        @maxUploadQueueSize = -1
+      @progressValue += 1
+
+      if @progressValue == @maxProgressValue
+        @progressValue = -1
+        @maxProgressValue = -1
         @uploading = false
 
       @updateActionStates()
@@ -207,15 +222,6 @@ class window.Uploader
     uploadHandler.success successUpload
     uploadHandler.error failUpload
     uploadHandler.complete completeCallback
-
-  displayUploadProgress: (percent) ->
-    progressBar = $('.upload-progress')
-
-    $('.bar', progressBar).width("#{percent}%").html(if percent > 10 then "#{percent}%" else "")
-    if percent >= 0 and percent < 100
-      progressBar.fadeIn()
-    else
-      progressBar.fadeOut()
 
   cancelUpload: =>
     if @uploading
