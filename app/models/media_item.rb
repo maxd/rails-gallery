@@ -13,6 +13,8 @@ class MediaItem
   has_and_belongs_to_many :albums
   has_many :additional_items
 
+  index({file_sha256: 1}, unique: true)
+
   accepts_nested_attributes_for :additional_items
 
   attr_accessible :file

@@ -9,6 +9,8 @@ class AdditionalItem
 
   belongs_to :media_item
 
+  index({media_item: 1})
+
   attr_accessible :file
 
   validates_presence_of :file_original_filename
