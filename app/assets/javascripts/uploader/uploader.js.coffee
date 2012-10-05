@@ -106,9 +106,12 @@ class window.Uploader
 
   renderMediaItems: =>
     # Update table rows
-    partials = _.map @mediaItems, (mediaItem) =>
+    rows = _.map @mediaItems, (mediaItem) =>
       @mediaItemRenderer.renderMediaItem mediaItem
-    $('.files-for-upload tbody').html(partials.join('\n'))
+
+    table = JST['templates/files_for_upload_table'](body: rows.join('\n'))
+
+    $('.files-for-upload').html(table)
 
     # Generate previews for images
     _.each @mediaItems, (mediaItem) =>
