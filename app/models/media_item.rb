@@ -28,18 +28,18 @@ class MediaItem
   validates_uniqueness_of :file_sha256
 
   def thumb_url
-    image = case file_type
+    item = case file_type
       when :image then file.image_thumb
       when :video then file.video_thumb
     end
-    file_processing ? image.default_url : image.url
+    file_processing ? item.default_url : item.url
   end
 
   def preview_url
-    image = case file_type
+    item = case file_type
       when :image then file.image_preview
-      when :video then file.video_preview
+      when :video then file.video_thumb
     end
-    file_processing ? image.default_url : image.url
+    file_processing ? item.default_url : item.url
   end
 end

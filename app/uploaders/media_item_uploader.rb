@@ -38,10 +38,40 @@ class MediaItemUploader < ItemUploader
     end
   end
 
-  version :video_preview, if: :video? do
+  version :video_preview_mp4, if: :video? do
+    process transcode: [:mp4, {video_codec: 'libx264', audio_codec: 'libfaac', custom: '-qscale 0 -preset slow -g 30 -maxrate 500k -bufsize 1000k -threads 0'}]
+
+    def filename
+      'video.mp4'
+    end
+
+    def full_filename(for_file)
+      filename
+    end
   end
 
-  version :video_thumb, from_version: :video_preview, if: :video? do
+  version :video_preview_webm, if: :video? do
+    process transcode: [:webm, {video_codec: 'libvpx', audio_codec: 'libvorbis', custom: '-b 500k -ab 160000 -f webm -g 30 -maxrate 500k -bufsize 1000k -threads 0'}]
+
+    def filename
+      'video.webm'
+    end
+
+    def full_filename(for_file)
+      filename
+    end
+  end
+
+  version :video_thumb, if: :video? do
+    process take_video_thumb: [{resolution: '100x75'}]
+
+    def filename
+      'video_thumb.png'
+    end
+
+    def full_filename(for_file)
+      filename
+    end
   end
 
   def filename
@@ -67,6 +97,24 @@ private
       img.auto_orient
       img
     end
+  end
+
+  def transcode(format, options = {}, transcoder_options = {})
+    tmp_path = File.join(File.dirname(current_path), "video_thumb.#{Time.now.to_i}.#{format}")
+
+    movie = FFMPEG::Movie.new(current_path)
+    movie.transcode(tmp_path, options, transcoder_options)
+
+    File.rename tmp_path, current_path
+  end
+
+  def take_video_thumb(options = {}, transcoder_options = {})
+    tmp_path = File.join(File.dirname(current_path), "video_thumb.#{Time.now.to_i}.png")
+
+    movie = FFMPEG::Movie.new(current_path)
+    movie.screenshot(tmp_path, options, transcoder_options)
+
+    File.rename tmp_path, current_path
   end
 
 end

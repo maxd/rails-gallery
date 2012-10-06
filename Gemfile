@@ -21,6 +21,7 @@ gem 'carrierwave',                  '~> 0.6.2'
 gem 'carrierwave-mongoid',          '0.3.0.alpha', require: 'carrierwave/mongoid', git: 'git://github.com/jnicklas/carrierwave-mongoid.git', branch: 'mongoid-3.0'
 gem 'carrierwave_backgrounder',     '~> 0.0.7'
 gem 'mini_magick',                  '~> 3.4.0'
+gem 'streamio-ffmpeg',              '~> 0.9.0'
 
 gem 'resque',                       '~> 1.23.0'
 

@@ -10,10 +10,15 @@
  *
  *= require custom_bootstrap/custom_bootstrap
  *= require jquery.ui.selectable
+ *= require video-js/video-js
  *= require_directory .
  *= require_self
  */
 
 .center-text {
   text-align: center;
+}
+
+.fancybox-nav {
+    height: 95% !important;
 }

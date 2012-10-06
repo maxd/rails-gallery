@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require jquery.ui.selectable
+//= require video-js/video
 //= require underscore
 //= require jquery.ba-jqmq
 //= require common

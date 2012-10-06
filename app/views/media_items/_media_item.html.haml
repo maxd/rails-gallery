@@ -1,3 +1,13 @@
 %li
-  %a.thumbnail{href: media_item.preview_url, rel: 'group'}
-    %img{src: media_item.thumb_url}
+  - case media_item.file_type
+    - when :image
+      %a.thumbnail{href: media_item.preview_url, rel: 'group'}
+        %img{src: media_item.thumb_url}
+    - when :video
+      %a.thumbnail{href: "#video-container-#{media_item.id}", rel: 'group'}
+        %img{src: media_item.thumb_url}
+      %div.hide
+        %video.video-js.vjs-default-skin{id: "video-container-#{media_item.id}", controls: :controls, preload: :auto}
+          - unless media_item.file_processing
+            %source{src: media_item.file.video_preview_webm, type: 'video/webm'}
+            %source{src: media_item.file.video_preview_mp4, type: 'video/mp4'}
