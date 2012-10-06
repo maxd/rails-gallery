@@ -9,7 +9,12 @@
 
   .span10.main
 
+- content_for :stylesheet do
+  = stylesheet_link_tag '/frameworks/fancybox2/jquery.fancybox', '/frameworks/fancybox2/helpers/jquery.fancybox-buttons', '/frameworks/fancybox2/helpers/jquery.fancybox-thumbs', media: 'all'
+
 - content_for :javascript do
+  = javascript_include_tag '/frameworks/fancybox2/jquery.fancybox', '/frameworks/fancybox2/helpers/jquery.fancybox-buttons', '/frameworks/fancybox2/helpers/jquery.fancybox-thumbs'
+
   :coffeescript
     window.reloadAlbums = ->
       $('.albums').load('#{albums_path}')
@@ -28,3 +33,17 @@
         if window.uploader
           window.uploader.dispose()
           window.uploader = null
+
+      $(".thumbnail").fancybox
+        prevEffect: 'none'
+        nextEffect: 'none'
+        playSpeed: 4000
+        helpers:
+          thumbs:
+            width: 100
+            height: 75
+          overlay:
+            css:
+              background: 'rgba(0, 0, 0, 0.9)'
+          buttons:
+            skipSingle: true

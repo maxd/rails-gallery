@@ -5,9 +5,5 @@
     %ul.thumbnails
       = render partial: 'media_items/media_item', collection: @media_items
 
-    :coffeescript
-      $('.items ul.thumbnails').selectable
-        filter: '.thumbnail'
-
   - else
     .alert.alert-info.center-text No photos or videos.
