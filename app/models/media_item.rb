@@ -1,5 +1,3 @@
-require 'digest'
-
 class MediaItem
   include Mongoid::Document
   include Mongoid::Timestamps
