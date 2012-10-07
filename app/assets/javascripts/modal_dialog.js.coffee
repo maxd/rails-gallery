@@ -19,4 +19,5 @@ $ ->
     false
 
   $(document).on 'submit', '.modal-dialog form', ->
+    $('.modal-dialog .confirm-button').click()
     false
