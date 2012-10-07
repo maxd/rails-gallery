@@ -16,6 +16,7 @@ class MediaItem
   has_many :additional_items
 
   index({file_sha256: 1}, unique: true)
+  index({created_at: 1})
 
   accepts_nested_attributes_for :additional_items
 
