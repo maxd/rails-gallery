@@ -10,10 +10,10 @@
   .span10.main
 
 - content_for :stylesheet do
-  = stylesheet_link_tag '/frameworks/fancybox2/jquery.fancybox', '/frameworks/fancybox2/helpers/jquery.fancybox-buttons', '/frameworks/fancybox2/helpers/jquery.fancybox-thumbs', media: 'all'
+  = stylesheet_link_tag 'fancybox2/jquery.fancybox', 'fancybox2/helpers/jquery.fancybox-buttons', 'fancybox2/helpers/jquery.fancybox-thumbs', media: 'all'
 
 - content_for :javascript do
-  = javascript_include_tag '/frameworks/fancybox2/jquery.fancybox', '/frameworks/fancybox2/helpers/jquery.fancybox-buttons', '/frameworks/fancybox2/helpers/jquery.fancybox-thumbs'
+  = javascript_include_tag 'fancybox2/jquery.fancybox', 'fancybox2/helpers/jquery.fancybox-buttons', 'fancybox2/helpers/jquery.fancybox-thumbs'
 
   :coffeescript
     window.reloadAlbums = ->
